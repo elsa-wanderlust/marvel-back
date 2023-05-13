@@ -43,7 +43,7 @@ router.delete("/favorite/comics/:id", isAuthenticated, async (req, res) => {
   }
 });
 
-// ROUTE 3 - GET ALL THE COMICS THAT MATCH A USED ID
+// ROUTE 3 - GET ALL THE COMICS THAT MATCH A USER ID - returns the MarvelId ONLY
 router.get("/favorite/comics", isAuthenticated, async (req, res) => {
   try {
     const allFavComics = await FavoriteComics.find({
@@ -60,21 +60,16 @@ router.get("/favorite/comics", isAuthenticated, async (req, res) => {
   }
 });
 
-// ROUTE 4 - GET ALL THE COMICS THAT MATCH A USED ID - returns only the Marvel movie IDs
-// why did I have to change it to post?!?!?!?!?!
-// router.post("/favorite/comics/idMarvel", isAuthenticated, async (req, res) => {
-//   try {
-//     const allFavComics = await FavoriteComics.find({
-//       owner: req.body.id,
-//     });
-//     let favComicsMarvelId = [];
-//     for (let i = 0; i < allFavComics.length; i++) {
-//       favComicsMarvelId.push(allFavComics[i].marvelId);
-//     }
-//     res.status(200).json(favComicsMarvelId);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
+// ROUTE 4 - GET ALL THE COMICS THAT MATCH A USER ID - returns all info
+router.get("/favorite/comics/allDetails", isAuthenticated, async (req, res) => {
+  try {
+    const allFavComics = await FavoriteComics.find({
+      owner: req.user,
+    });
+    res.status(200).json(allFavComics);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 module.exports = router;
