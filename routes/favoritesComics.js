@@ -49,8 +49,12 @@ router.get("/favorite/comics", isAuthenticated, async (req, res) => {
     const allFavComics = await FavoriteComics.find({
       owner: req.user,
     });
-    console.log(allFavComics);
-    res.status(200).json(allFavComics);
+    // from allFavComics, returns their MarvelId only, in a tab
+    let favComicsMarvelId = [];
+    for (let i = 0; i < allFavComics.length; i++) {
+      favComicsMarvelId.push(allFavComics[i].marvelId);
+    }
+    res.status(200).json(favComicsMarvelId);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
