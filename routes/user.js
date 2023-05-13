@@ -41,14 +41,8 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       salt,
     });
     console.log(newUser);
-    // const imageUploaded = await cloudinary.uploader.upload(
-    //   convertToBase64(req.files.avatar),
-    //   { folder: `/marvel/users/${newUser._id}` }
-    // );
-    // newUser.account.avatar = imageUploaded;
 
     await newUser.save();
-    console.log("youpi");
     res.status(201).json({
       _id: newUser._id,
       token: token,
