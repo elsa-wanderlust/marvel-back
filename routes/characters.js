@@ -25,19 +25,4 @@ router.get("/characters", async (req, res) => {
   }
 });
 
-// ROUTE 2 - get the details of one character // USELESS
-// receive the characters ID as params
-// router.get("/character/:id", async (req, res) => {
-//   try {
-//     const characterID = req.params.id;
-//     const serverResponse = await axios.get(
-//       `https://lereacteur-marvel-api.herokuapp.com/character/${characterID}?apiKey=${process.env.MARVEL_API_KEY}`
-//     );
-//     console.log(serverResponse);
-//     res.status(200).json(serverResponse.data);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-
 module.exports = router;

@@ -24,21 +24,7 @@ router.get("/comics", async (req, res) => {
   }
 });
 
-// ROUTE 2 - get the details of one comic
-// receive the comic ID as params
-// router.get("/comic/:id", async (req, res) => {
-//   try {
-//     const comicID = req.params.id;
-//     const serverResponse = await axios.get(
-//       `https://lereacteur-marvel-api.herokuapp.com/comic/${comicID}?apiKey=${process.env.MARVEL_API_KEY}`
-//     );
-//     res.status(200).json(serverResponse.data);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-
-// ROUTE 3 - get all the comics in which a specific characters appears
+// ROUTE 2 - get all the comics in which a specific characters appears
 // receive the characters ID as params
 router.get("/comics/:id", async (req, res) => {
   try {
