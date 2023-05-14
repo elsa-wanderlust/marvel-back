@@ -45,19 +45,21 @@ router.delete("/favorite/characters/:id", isAuthenticated, async (req, res) => {
 
 // ROUTE 3 - GET ALL THE CHARACTERS THAT MATCH A USER ID - returns the MarvelId ONLY
 router.get("/favorite/characters", isAuthenticated, async (req, res) => {
-  try {
-    const allFavCharacters = await FavoriteCharacters.find({
-      owner: req.user,
-    });
-    // from allFavCharacters, returns their MarvelId only, in a tab
-    let favCharactersMarvelId = [];
-    for (let i = 0; i < allFavCharacters.length; i++) {
-      favCharactersMarvelId.push(allFavCharacters[i].marvelId);
-    }
-    res.status(200).json(favCharactersMarvelId);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+  res.status(200).json("youpi");
+
+  // try {
+  //   const allFavCharacters = await FavoriteCharacters.find({
+  //     owner: req.user,
+  //   });
+  //   // from allFavCharacters, returns their MarvelId only, in a tab
+  //   let favCharactersMarvelId = [];
+  //   for (let i = 0; i < allFavCharacters.length; i++) {
+  //     favCharactersMarvelId.push(allFavCharacters[i].marvelId);
+  //   }
+  //   res.status(200).json(favCharactersMarvelId);
+  // } catch (error) {
+  //   res.status(500).json({ message: error.message });
+  // }
 });
 
 // ROUTE 4 - GET ALL THE CHARACTERS THAT MATCH A USER ID - returns all info
