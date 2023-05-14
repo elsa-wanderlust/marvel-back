@@ -44,7 +44,7 @@ router.delete("/favorite/characters/:id", isAuthenticated, async (req, res) => {
 });
 
 // ROUTE 3 - GET ALL THE CHARACTERS THAT MATCH A USER ID - returns the MarvelId ONLY
-router.get("/favorite/characters", isAuthenticated, async (req, res) => {
+router.get("/favorite/characters/", isAuthenticated, async (req, res) => {
   res.status(200).json("youpi");
 
   // try {
