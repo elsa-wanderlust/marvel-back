@@ -16,6 +16,8 @@ const userRoutes = require("./routes/user");
 app.use(userRoutes);
 const favoriteComicsRoutes = require("./routes/favoritesComics");
 app.use(favoriteComicsRoutes);
+const favoriteCharactersRoutes = require("./routes/favoritesCharacters");
+app.use(favoriteCharactersRoutes);
 
 app.all("*", (req, res) => [res.status(400).json("this route doesn't exist")]);
 
