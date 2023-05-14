@@ -4,18 +4,10 @@ const SHA256 = require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-base64");
 const router = express.Router();
 const fileUpload = require("express-fileupload");
-// const cloudinary = require("cloudinary").v2;
 
 // IMPORT THE MODELS
 const FavoriteComics = require("../models/FavoriteComics");
 const Users = require("../models/Users");
-
-// DECLARE FUNCTION
-// to transform the picture file received as a 'buffer' into a base64,
-// to then be able to upload to cloudinary
-const convertToBase64 = (file) => {
-  return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
-};
 
 // ROUTE 1 - SIGN UP
 router.post("/user/signup", fileUpload(), async (req, res) => {
